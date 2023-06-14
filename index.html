@@ -92,6 +92,7 @@
   </div>
 </section>
 
+
 <section class="section">
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
@@ -103,12 +104,14 @@
             src="" title="LSC" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen>
           </iframe> -->
           <video id="replay-video"
+                 autoplay
+                 loop
                  controls
                  muted
                  preload
                  playsinline
-                 width="75%">
-            <source src="./static/videos/method.mp4"
+                 width="100%">
+            <source src="./static/videos/spot_video_task.mp4"
                     type="video/mp4">
           </video>
         </div>
@@ -140,8 +143,8 @@
           </p> -->
           <p>
             We demonstrate Language-guided Skill Coordination (LSC) for open-vocabulary mobile pick-and-place on Spot.
-            A user provides a natural language instruction: "".
-            And the robot ""
+            A user provides a natural language instruction: "Bring me the chocolates, cereal and pills to the room table".
+            And the robot navigates to the location of the target objects and place them on the room table.
           </p>
         </div>
       </div>
@@ -171,6 +174,22 @@ These show that our proposed method is robust to disturbance. -->
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
         <h2 class="title is-3">Approach</h2>
+        <div class="videoWrapper">
+          <!-- <iframe width="100%" height="480"
+            src="" title="LSC" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen>
+          </iframe> -->
+          <video id="replay-video"
+                 autoplay
+                 loop
+                 controls
+                 muted
+                 preload
+                 playsinline
+                 width="100%">
+            <source src="./static/videos/method.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
         <div class="content has-text-justified">
           <p>
             Natural language provides a simple way for humans to specify a goal for a robot,
