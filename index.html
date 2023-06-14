@@ -180,20 +180,19 @@ These show that our proposed method is robust to disturbance. -->
             The proposed method "Language-guided Skill Coordination" (LSC) consists of three parts:
             (1) an LLM that takes natural language instruction as input and makes calls to a library of skills,
             along with their corresponding skills' input parameters such as the target object name,
-            (2) a perception module that stores the location of the receptacles, and
+            (2) a perception module that stores the location of the receptacles and provides open-vocabulary object detection, and
             (3) a voice-to-text model that processes the audio into text.
           </p>
           <p>
             For example, the top-most video shows a user saying <i>"Bring me the chocolates, cereal and pills to the room table"</i>,
-            The LLM takes the text input and makes calls to low-level skills
-            <i>Nav</i>(<i>counter</i>) -> <i>Pick</i>(<i>cereal</i>) -> <i>Nav</i>(<i>room table</i>) -> <i>Place</i>().
+            The LLM takes the text input and makes calls to low-level skills:
+            <i>Nav</i>(<i>counter</i>), <i>Pick</i>(<i>cereal</i>), <i>Nav</i>(<i>room table</i>), and <i>Place</i>().
             When executing <i>Nav</i>(<i>counter</i>),
             a perception module is queried to get the location of the counter.
             Then this location is fed into a reinforcement-learning-trained navigation policy
             to let Spot navigate to the target. After Spot finds the counter,
             <i>Pick</i>(<i>cereal</i>) is used to pick up the target object.
-            The pick policy is trained to move the arm to the target grasping location of the object
-            defined by the text so that Spot can grasp the object.
+            The pick policy is trained to move the arm to the target grasping location of the object with the input of the object bounding box returned by the perception module.
             Finally, Spot uses <i>Nav</i>(<i>room table</i>)</b> to find the room table and then calls
             <i>Place()</i> to place the object there.
             The entire process repeats for rearranging chocolates and pills.
