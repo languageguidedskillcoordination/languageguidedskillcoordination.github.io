@@ -46,7 +46,7 @@
     <div class="container is-max-desktop">
       <div class="columns is-centered">
         <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title">LSC: Language-guided Skill Coordination: Open-Vocabulary Mobile Pick-and-Place for Spot</h1>
+          <h1 class="title is-1 publication-title">LSC: Language-guided Skill Coordination</h1>
           <div class="is-size-5 publication-authors">
             <span class="author-block">
               <a href="https://sites.google.com/view/tyjimmyyang">Tsung-Yen Yang</a><sup>1*</sup>,</span>
@@ -99,9 +99,18 @@
         <h2 class="title is-3">Demo</h2>
         <br>
         <div class="videoWrapper">
-          <iframe width="100%" height="480"
-            src="https://www.youtube.com/embed/cQIQKCt0YIY" title="Open-vocabulary Mobile Pick-and-Place for Spot" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen>
-          </iframe>
+          <!-- <iframe width="100%" height="480"
+            src="" title="LSC" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen>
+          </iframe> -->
+          <video id="replay-video"
+                 controls
+                 muted
+                 preload
+                 playsinline
+                 width="75%">
+            <source src="./static/videos/method.mp4"
+                    type="video/mp4">
+          </video>
         </div>
         <div class="content has-text-justified">
           <!-- <p>
@@ -130,14 +139,9 @@
             and a low level at which skills are chained together while being a response to changing conditions.
           </p> -->
           <p>
-            In this demo, we are going to show that a robot receives natural language instruction for completing the task
-            of open-vocabulary object nav-pick-place tasks.
-            The user is able to provide the instruction either by typing or saying using a keyboard or microphone.
-            For example, the first demo in the video (2:35) shows a user typing <i>"find human and get mug and place it in the case"</i>.
-            The robot first goes to the human location, picks up the mug, navigates to the case, and places the mug there.
-            In addition, the second demo in the video (3:22) shows a user typing <i>"navigate to the human and get the mug and place it in the sink"</i>.
-            The robot first goes to the human location, grasps the mug, and finally places the mug in the sink.
-            The user will be able to provide free-form instructions, and the robot will follow the instruction.
+            We demonstrate Language-guided Skill Coordination (LSC) for open-vocabulary mobile pick-and-place on Spot.
+            A user provides a natural language instruction: "".
+            And the robot ""
           </p>
         </div>
       </div>
@@ -172,22 +176,19 @@ These show that our proposed method is robust to disturbance. -->
             Natural language provides a simple way for humans to specify a goal for a robot,
             such as <i>"go to the kitchen and bring the sugar to me."</i>
             However, current state-of-the-art language-based embodied AI systems do not have such capability since
-            (1) they rely on a fixed-set vocabulary that cannot generalize to diverse instructions,
-            and (2) the robot does not know the semantic meaning of the environment,
+            they rely on a fixed-set vocabulary that cannot generalize to diverse instructions,
             and thus requires knowing the point goal location to navigate to.
           </p>
           <p>
-            In this demo, we demonstrate embodied AI systems that use large language models (LLMs)
-            to chain Spot's (quadruped robot by Boston Dynamics) low-level skills and thus complete open-vocabulary object nav-pick-place tasks.
-            The proposed system consists of three parts:
-            (1) LLMs take natural language instruction as input and produce a sequence of low-level skills,
+            LSC consists of three parts:
+            (1) an LLM that takes natural language instruction as input and produces a sequence of skills,
             along with their corresponding skills' input parameters such as the target object name,
-            (2) a pre-built map that stores CLIP embedding of the environment is used to query the point goal location given text generated from LLMs,
-            and (3) finally these low-level skills are executed sequentially to complete the task.
+            (2) a pre-built map that stores the location of the receptacles,
+            (3) a library of skills that are executed sequentially to complete the task.
           </p>
           <p>
             For example, the first demo in the video (2:35) shows a user typing <i>"find human and get mug and place it in the case"</i>,
-            LLMs take the text input and output a sequence of low-level skills:
+            LLMs take the text input and output a sequence of skills:
             <b>NavPolicy(<i>"human"</i>) -> PickPolicy(<i>"mug"</i>) -> NavPolicy(<i>"case"</i>) -> PlacePolicy()</b>.
             When executing <b>NavPolicy(<i>"human"</i>)</b>,
             a semantic feature map of the environment is queried to get a point-goal location of the human.
@@ -204,10 +205,10 @@ These show that our proposed method is robust to disturbance. -->
           </p>
           <p>
             This demo pieces many efforts together within the Embodied AI team at FAIR.
-            One critical component of this demo is low-level skills.
-            These low-level skills are from
+            One critical component of this demo is the library of skills.
+            They are from
             <a href="https://adaptiveskillcoordination.github.io/">Adaptive Skill Coordination for Robotic Mobile Manipulation paper</a>.
-            Moreover, we use the idea from the paper
+            Moreover, we are exploring the idea from the paper
             <a href="https://arxiv.org/abs/2212.00922">Navigating to Objects in the Real World</a> for building the semantic map of the environment.
           </p>
         </div>
