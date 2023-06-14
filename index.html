@@ -113,36 +113,11 @@
                  preload
                  playsinline
                  width="100%">
-            <source src="./static/videos/spot_video_task.mp4"
+            <source src="./static/videos/cvpr_video_#1.mp4"
                     type="video/mp4">
           </video>
         </div>
         <div class="content has-text-justified">
-          <!-- <p>
-            Natural language provides a simple way for humans to specify a goal for a robot,
-            such as <i>"go to the kitchen and bring the sugar to me."</i>
-            However, current state-of-the-art language-based embodied AI systems
-            such as <a href="https://say-can.github.io/">SayCan (Ahn et al., 2022)</a> do not have such capability since
-            (1) they rely on a fixed-set vocabulary that cannot generalize to diverse instructions,
-            and (2) the robot does not know the semantic meaning of the environment,
-            and thus requires knowing point goal location to navigate to.
-          </p>
-          <p>
-            In this demo, we demonstrate embodied AI systems that use large language models (LLMs)
-            to chain Spot's (quadruped robot by Boston Dynamics) low-level skills and thus complete open-vocabulary object nav-pick-place tasks.
-            The proposed system consists of three parts:
-            (1) LLMs take a natural language instruction as input and produce a sequence of low-level skills,
-            along with their corresponding skills' input parameters such as the target object name,
-            (2) a pre-built map that stores CLIP embedding of the environment is used to query the point goal location given text generated from LLMs,
-            and (3) finally these low-level skills are executed sequentially to complete the task.
-          </p>
-          <p>
-            By doing so, the robot figures out the location of the target object and formulates a plan of action.
-            These components form a natural hierarchical architecture for intelligent control:
-            a high level at which goal and state are identified from sensory data
-            and object search and feasible plans are formulated given text,
-            and a low level at which skills are chained together while being a response to changing conditions.
-          </p> -->
           <p>
             We demonstrate Language-guided Skill Coordination (LSC) for open-vocabulary mobile pick-and-place on Spot.
             A user provides a natural language instruction: <i>"Bring me the chocolates, cereal and pills to the room table"</i>.
@@ -223,10 +198,74 @@ These show that our proposed method is robust to disturbance. -->
             <i>Place()</i> to place the object there.
             The entire process repeats for rearranging chocolates and pills.
           </p>
+          <div class="videoWrapper">
+            <!-- <iframe width="100%" height="480"
+              src="" title="LSC" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen>
+            </iframe> -->
+            <video id="replay-video"
+                   autoplay
+                   loop
+                   controls
+                   muted
+                   preload
+                   playsinline
+                   width="100%">
+              <source src="./static/videos/cvpr_video_#2.mp4"
+                      type="video/mp4">
+            </video>
+          </div>
+          <div class="videoWrapper">
+            <!-- <iframe width="100%" height="480"
+              src="" title="LSC" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen>
+            </iframe> -->
+            <video id="replay-video"
+                   autoplay
+                   loop
+                   controls
+                   muted
+                   preload
+                   playsinline
+                   width="100%">
+              <source src="./static/videos/cvpr_video_#3.mp4"
+                      type="video/mp4">
+            </video>
+          </div>
+          <div class="videoWrapper">
+            <!-- <iframe width="100%" height="480"
+              src="" title="LSC" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen>
+            </iframe> -->
+            <video id="replay-video"
+                   autoplay
+                   loop
+                   controls
+                   muted
+                   preload
+                   playsinline
+                   width="100%">
+              <source src="./static/videos/cvpr_video_#4.mp4"
+                      type="video/mp4">
+            </video>
+          </div>
+          <div class="videoWrapper">
+            <!-- <iframe width="100%" height="480"
+              src="" title="LSC" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen>
+            </iframe> -->
+            <video id="replay-video"
+                   autoplay
+                   loop
+                   controls
+                   muted
+                   preload
+                   playsinline
+                   width="100%">
+              <source src="./static/videos/cvpr_video_#5.mp4"
+                      type="video/mp4">
+            </video>
+          </div>
           <p>
-            In addition, our navigation policy is able to take an alternative route to avoid collision with humans as shown in the micro-kitchen demo.
-            Moreover, our pick policy is able to change the grasping location if the object moves in the robotics lab demo.
-            These show that our proposed method is robust to disturbance.
+            In terms of robustness of LSC, the navigation policy is able to take an alternative route to avoid collision with humans.
+            In addition, the pick policy is able to change the grasping location if the object moves or the base is not closed enough to the receptacle.
+            These show that LSC is robust to disturbance.
           </p>
           <p>
             This demo pieces many efforts together within the Embodied AI team at FAIR.
@@ -239,6 +278,8 @@ These show that our proposed method is robust to disturbance. -->
     </div>
   </div>
 </section>
+
+
 
 <section class="section">
   <div class="container is-max-desktop">
