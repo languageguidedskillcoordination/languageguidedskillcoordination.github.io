@@ -135,7 +135,8 @@
         </div>
         <div class="content has-text-justified">
           <p>
-            We demonstrate Language-guided Skill Coordination (LSC) for open-vocabulary mobile pick-and-place on Spot.
+            We demonstrate Language-guided Skill Coordination (LSC) for open-vocabulary mobile pick-and-place on Spot
+            in partially pre-mapped environments (known receptacle locations, unknown object or other obstacle locations).
             A user provides a natural language instruction: <i>"Bring me the chocolates box, cereal box, and pill bottle, and put them on the bedroom table"</i>.
             And the robot navigates to the location of the target objects and places them on the room table.
           </p>
@@ -196,7 +197,7 @@ These show that our proposed method is robust to disturbance. -->
             The proposed method "Language-guided Skill Coordination" (LSC) consists of three parts:
             (1) an LLM that takes natural language instruction as input and makes calls to a library of skills,
             along with their corresponding skills' input parameters such as the target object name,
-            (2) a perception module that stores the location of the receptacles and provides open-vocabulary object detection, and
+            (2) a perception module that provides grund-truth locations of receptacles on that map and open-vocabulary object detection, and
             (3) a voice-to-text model that processes the audio into text.
           </p>
           <p>
@@ -310,6 +311,7 @@ These show that our proposed method is robust to disturbance. -->
             Second, we run our demo in static environments where the location of the object is approximately fixed and the robot is the only agent.
             Future work involves studying human-robot collaboration in a more active way,
             and dynamic environments.
+            Last but not least, we pre-map the environments to know receptacle locations. Future work will be to build the map while the robot is exploring the environment.
           </p>
         </div>
       </div>
