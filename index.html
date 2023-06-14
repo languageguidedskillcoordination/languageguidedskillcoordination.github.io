@@ -143,8 +143,8 @@
           </p> -->
           <p>
             We demonstrate Language-guided Skill Coordination (LSC) for open-vocabulary mobile pick-and-place on Spot.
-            A user provides a natural language instruction: "Bring me the chocolates, cereal and pills to the room table".
-            And the robot navigates to the location of the target objects and place them on the room table.
+            A user provides a natural language instruction: <i>"Bring me the chocolates, cereal and pills to the room table"</i>.
+            And the robot navigates to the location of the target objects and places them on the room table.
           </p>
         </div>
       </div>
@@ -195,40 +195,42 @@ These show that our proposed method is robust to disturbance. -->
             Natural language provides a simple way for humans to specify a goal for a robot,
             such as <i>"go to the kitchen and bring the sugar to me."</i>
             However, current state-of-the-art language-based embodied AI systems do not have such capability since
-            they rely on a fixed-set vocabulary that cannot generalize to diverse instructions,
-            and thus requires knowing the point goal location to navigate to.
+            they rely on a fixed-set vocabulary that cannot generalize to diverse instructions.
+            In this demo, we propose a method that uses large language models (LLMs) to receive
+            a free-form natural language instruction for object rearrangement.
           </p>
           <p>
-            LSC consists of three parts:
-            (1) an LLM that takes natural language instruction as input and produces a sequence of skills,
+            The proposed method "Language-guided Skill Coordination" (LSC) consists of three parts:
+            (1) an LLM that takes natural language instruction as input and makes calls to a library of skills,
             along with their corresponding skills' input parameters such as the target object name,
-            (2) a pre-built map that stores the location of the receptacles,
-            (3) a library of skills that are executed sequentially to complete the task.
+            (2) a perception module that stores the location of the receptacles, and
+            (3) a voice-to-text model that processes the audio into text.
           </p>
           <p>
-            For example, the first demo in the video (2:35) shows a user typing <i>"find human and get mug and place it in the case"</i>,
-            LLMs take the text input and output a sequence of skills:
-            <b>NavPolicy(<i>"human"</i>) -> PickPolicy(<i>"mug"</i>) -> NavPolicy(<i>"case"</i>) -> PlacePolicy()</b>.
-            When executing <b>NavPolicy(<i>"human"</i>)</b>,
-            a semantic feature map of the environment is queried to get a point-goal location of the human.
-            Then this point goal location is fed into a reinforcement-learning-trained navigation policy
-            to let Spot navigate to the target. After Spot finds the human,
-            <b>PickPolicy(<i>"mug"</i>)</b> is used to pick up the target object.
+            For example, the top video shows a user saying <i>"Bring me the chocolates, cereal and pills to the room table"</i>,
+            The LLM takes the text input and makes calls to low-level skills
+            <i>Nav</i>(<i>counter</i>) -> <i>Pick</i>(<i>"cereal"</i>) -> <i>Nav</i>(<i>"room table"</i>) -> <i>Place</i>().
+            When executing <b>Nav(<i>"counter"</i>)</b>,
+            a perception module is queried to get the location of the counter.
+            Then this location is fed into a reinforcement-learning-trained navigation policy
+            to let Spot navigate to the target. After Spot finds the counter,
+            <i>Pick</i>(<i>"cereal"</i>) is used to pick up the target object.
             The pick policy is trained to move the arm to the target grasping location of the object
             defined by the text so that Spot can grasp the object.
-            Finally, Spot uses <b>NavPolicy(<i>"case"</i>)</b> to find the case and then calls
-            <b>PlacePolicy()</b> to place the object there.
+            Finally, Spot uses <i>Nav</i>(<i>"room table"</i>)</b> to find the room table and then calls
+            <i>Place()</i> to place the object there.
+            The entire process repeats for rearranging chocolates and pills.
+          </p>
+          <p>
             In addition, our navigation policy is able to take an alternative route to avoid collision with humans as shown in the micro-kitchen demo.
             Moreover, our pick policy is able to change the grasping location if the object moves in the robotics lab demo.
             These show that our proposed method is robust to disturbance.
           </p>
           <p>
             This demo pieces many efforts together within the Embodied AI team at FAIR.
-            One critical component of this demo is the library of skills.
+            For example, one critical component of this demo is the library of skills.
             They are from
             <a href="https://adaptiveskillcoordination.github.io/">Adaptive Skill Coordination for Robotic Mobile Manipulation paper</a>.
-            Moreover, we are exploring the idea from the paper
-            <a href="https://arxiv.org/abs/2212.00922">Navigating to Objects in the Real World</a> for building the semantic map of the environment.
           </p>
         </div>
       </div>
